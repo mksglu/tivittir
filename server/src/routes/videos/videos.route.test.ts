@@ -24,7 +24,7 @@ describe("Videos Route", () => {
     it("it should be create a new video", async () => {
       const res = await request(server)
         .post(`/video`)
-        .send({ url: "https", tags: ["mert", "eban"] });
+        .send({ url: "https://twitter.com/video", tags: ["mert", "eban"] });
       expect(res.status).toBe(201);
     });
   });

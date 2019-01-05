@@ -19,7 +19,7 @@ describe("Videos Service", () => {
       const createVideo = await videosService.createVideo({
         status: "0",
         url: "https://twitter.com/video",
-        tags: ["araba", "otomobil"]
+        tags: ["car", "bus"]
       } as IVideos);
       expect(createVideo.status).toBe(true);
       expect(createVideo.data.status).toEqual("0");
