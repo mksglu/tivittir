@@ -5,5 +5,5 @@ export default interface IVideos extends Document {
   hit: string;
   url: string;
   status: string;
-  tags: [];
+  tags: string[];
 }

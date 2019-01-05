@@ -3,6 +3,7 @@ import { IVideos } from "interfaces";
 import { Videos } from "../../models";
 
 const createVideo = async (req: IVideos): Promise<any> => {
+  // console.log(req.url);
   const Video = new Videos({
     _id: crypto
       .createHash("md5")
@@ -15,6 +16,7 @@ const createVideo = async (req: IVideos): Promise<any> => {
   });
   try {
     const newVideo = await Video.save();
+    // console.log(newVideo, "newVideo");
     return { status: true, data: { ...newVideo["_doc"] } };
   } catch (error) {
     return { status: false, message: error };

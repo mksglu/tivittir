@@ -24,7 +24,7 @@ class App {
   private mongoSetup(): void {
     mongoose
       .connect(
-        config.NODE_ENV === "dev" ? config.connectionStr.dev : config.NODE_ENV === "test" ? config.connectionStr.dev : config.connectionStr.prod,
+        config.NODE_ENV === "dev" ? config.connectionStr.dev : config.NODE_ENV === "test" ? config.connectionStr.test : config.connectionStr.prod,
         { useNewUrlParser: true }
       )
       .then(() => console.log("MongoDB Connected"))
