@@ -49,7 +49,8 @@ describe("Videos Service", () => {
         } as IVideos);
       }
       const getTrends = await videosService.getTrends();
-      const getIndex = getTrends.data.findIndex(video => video.hit === "4");
+      const array = JSON.parse("[" + getTrends.data.map(x => x.hit) + "]");
+      const getIndex = array.indexOf(Math.max(...array));
       expect(getTrends.status).toBe(true);
       expect(getIndex).toEqual(0);
     });

@@ -12,4 +12,9 @@ router.get("/trends", async (req: Request, res: Response) => {
   if (!getTrends.status) return res.status(400).send(getTrends);
   return res.status(200).send(getTrends);
 });
+router.get("/search", async (req: Request, res: Response) => {
+  const searcVideo = await videosService.searchVideo(req.body);
+  // if (!searcVideo.status) return res.status(400).send(searcVideo);
+  // return res.status(200).send(searcVideo);
+});
 export default router;

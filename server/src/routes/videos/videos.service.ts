@@ -3,7 +3,6 @@ import { IVideos } from "interfaces";
 import { Videos } from "../../models";
 
 const createVideo = async (req: IVideos): Promise<any> => {
-  // console.log(req.url);
   const Video = new Videos({
     _id: crypto
       .createHash("md5")
@@ -16,7 +15,6 @@ const createVideo = async (req: IVideos): Promise<any> => {
   });
   try {
     const newVideo = await Video.save();
-    // console.log(newVideo, "newVideo");
     return { status: true, data: { ...newVideo["_doc"] } };
   } catch (error) {
     return { status: false, message: error };
@@ -32,4 +30,10 @@ const getTrends = async (): Promise<any> => {
     return { status: false, message: error };
   }
 };
-export default { createVideo, getTrends };
+const searchVideo = async (req: IVideos): Promise<any> => {
+  try {
+    const search = await Videos.find({ tags: { $regex: req.tags } });
+    console.log(search);
+  } catch (error) {}
+};
+export default { createVideo, getTrends, searchVideo };
